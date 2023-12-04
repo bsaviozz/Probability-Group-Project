@@ -40,6 +40,7 @@ game <- function(x, n, max){
     j <- j +1
   }
   p <- win / timesToRun
+  return(p)
 }
 
 count <- seq(2,25, by=0.5)
