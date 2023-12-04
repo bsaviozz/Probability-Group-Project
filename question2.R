@@ -21,10 +21,9 @@ expected_payoff <- function(n){
     net_payoff <- net_payoff + game_simulation(n)
     c <- c -1
   }
-  expected_value <- net_payoff / 10000
+  expected_value <- net_payoff/10000
   return(expected_value)
 }
-
 
 
 count <- 1000
@@ -32,10 +31,16 @@ n_10_biggest <-0
 n_100_biggest <-0
 n_1000_biggest <-0
 #set.seed(123)
+p10 <- c(0)
+p100 <- c(0)
+p1000 <- c(0)
 while(count > 0){
   payoff_10 <- expected_payoff(10)
+  p10 <- c(p10, payoff_10)
   payoff_100 <- expected_payoff(100)
+  p100 <- c(p100, payoff_100)
   payoff_1000 <- expected_payoff(1000)
+  p1000 <- c(p1000, payoff_1000)
   
   if(payoff_10 > payoff_100 && payoff_10 > payoff_1000){
     n_10_biggest<- n_10_biggest + 1
@@ -52,6 +57,11 @@ while(count > 0){
   count <- count - 1
 }
 
-  
+payoff <- c(n_10_biggest, n_100_biggest, n_1000_biggest, rep(0, 37))
+values <- seq(50:800, by=20)
+data <- data.frame(values)
+barplot(height=values, names=payoff)
 
-
+p10
+p100
+p1000
