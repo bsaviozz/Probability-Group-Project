@@ -57,11 +57,6 @@ while(count > 0){
   count <- count - 1
 }
 
-payoff <- c(n_10_biggest, n_100_biggest, n_1000_biggest, rep(0, 37))
-values <- seq(50:800, by=20)
-data <- data.frame(values)
-barplot(height=values, names=payoff)
-
 p10
 p100
 p1000
